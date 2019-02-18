@@ -15,15 +15,19 @@ class Car extends Base
     /**
      * @example 'Mercedes s500'
      */
-    public function car()
-    {
-        $brandNames = array_keys(static::$brandModelNames);
-        $brand = static::randomElement($brandNames);
-
-        $model = static::randomElementByKey(static::$brandModelNames, $brand);
-
-        return $brand . ' ' . $model;
-    }
+    public function car($array = false)
+	{
+		$brandNames = array_keys(static::$brandModelNames);
+		$brand = static::randomElement($brandNames);
+		
+		$model = static::randomElementByKey(static::$brandModelNames, $brand);
+		
+		if ($array) {
+			return [$brand, $model];
+		}
+		
+		return $brand . ' ' . $model;
+	}
 
     /**
      * @example 'Audi'
